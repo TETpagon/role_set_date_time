@@ -1,0 +1,11 @@
+---
+  - name: Disable network time setting
+    shell: timedatectl set-ntp no
+
+  - name: Set date
+    shell: date --set "{{datetime}}"
+
+  - name: Check datetime
+    shell: date
+    register: r
+  - debug: msg="{{r.stdout}}"
